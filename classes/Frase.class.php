@@ -30,7 +30,7 @@ class Frase{
     // Efetuar correções:
     public function BuscarPorNomeFilme(){
         $banco = Banco::conectar();
-        $sql = "SELECT * FROM frases_filmes WHERE filme LIKE CONCAT(?, %)";
+        $sql = "SELECT * FROM frases_filmes WHERE filme LIKE CONCAT('%',?,'%')";
         $comando = $banco->prepare($sql);
         $comando->execute(array($this->filme));
         $resultado = $comando->fetchAll(PDO::FETCH_ASSOC);
